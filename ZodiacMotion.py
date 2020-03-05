@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 
 import os
 import re
@@ -9,8 +9,7 @@ import sys
 import ssl
 import tkinter as tk
 
-from time import time, sleep
-from threading import Thread
+from time import time
 from subprocess import Popen
 from webbrowser import open_new
 from platform import architecture
@@ -536,7 +535,6 @@ class Canvas(tk.Canvas):
             self.objects[name] = line
         else:
             self.coords(self.objects[name], x1, y1, x2, y2)
-##            self.update()
 
     def aspect_line_object(
             self,
@@ -562,7 +560,6 @@ class Canvas(tk.Canvas):
                 self.aspect_objects[(key, _key)] = line
             else:
                 self.coords(self.aspect_objects[(key, _key)], x1, y1, x2, y2)
-##                self.update()
 
     def text_object(
             self,
@@ -581,7 +578,6 @@ class Canvas(tk.Canvas):
             self.objects[name] = text
         else:
             self.coords(self.objects[name], x, y)
-##            self.update()
 
     def draw_houses(self):
         self.midpoint_of_houses = []
@@ -744,28 +740,28 @@ class Canvas(tk.Canvas):
                 key=key,
                 _key=_key
             )
-        # elif 30 - dms_to_dd(ASPECTS["Semi-Sextile"]["orb"]) < aspect <
-        #         30 + dms_to_dd(ASPECTS["Semi-Sextile"]["orb"]) or \
-        #         330 - dms_to_dd(ASPECTS["Semi-Sextile"]["orb"]) < \
-        #         aspect < 330 + dms_to_dd(ASPECTS["Semi-Sextile"]["orb"]):
-        #     self.create_aspect(
-        #         value = value,
-        #         _value=_value,
-        #         color="black",
-        #         key=key,
-        #         _key=_key
-        #     )
-        # elif 45 - dms_to_dd(ASPECTS["Semi-Square"]["orb"]) < aspect < \
-        #         45 + dms_to_dd(ASPECTS["Semi-Square"]["orb"]) or \
-        #         315 - dms_to_dd(ASPECTS["Semi-Square"]["orb"]) < aspect < \
-        #         315 + dms_to_dd(ASPECTS["Semi-Square"]["orb"]):
-        #     self.create_aspect(
-        #         value = value,
-        #         _value=_value,
-        #         color="black",
-        #         key=key,
-        #         _key=_key
-        #     )
+        #        elif 30 - dms_to_dd(ASPECTS["Semi-Sextile"]["orb"]) < aspect <
+        #                30 + dms_to_dd(ASPECTS["Semi-Sextile"]["orb"]) or \
+        #                330 - dms_to_dd(ASPECTS["Semi-Sextile"]["orb"]) < \
+        #                aspect < 330 + dms_to_dd(ASPECTS["Semi-Sextile"]["orb"]):
+        #            self.create_aspect(
+        #                value = value,
+        #                _value=_value,
+        #                color="black",
+        #                key=key,
+        #                _key=_key
+        #            )
+        #        elif 45 - dms_to_dd(ASPECTS["Semi-Square"]["orb"]) < aspect < \
+        #                45 + dms_to_dd(ASPECTS["Semi-Square"]["orb"]) or \
+        #                315 - dms_to_dd(ASPECTS["Semi-Square"]["orb"]) < aspect < \
+        #                315 + dms_to_dd(ASPECTS["Semi-Square"]["orb"]):
+        #            self.create_aspect(
+        #                value = value,
+        #                _value=_value,
+        #                color="black",
+        #                key=key,
+        #                _key=_key
+        #            )
         elif 60 - dms_to_dd(ASPECTS["Sextile"]["orb"]) < aspect < \
                 60 + dms_to_dd(ASPECTS["Sextile"]["orb"]) or \
                 300 - dms_to_dd(ASPECTS["Sextile"]["orb"]) < aspect < \
@@ -777,17 +773,17 @@ class Canvas(tk.Canvas):
                 key=key,
                 _key=_key
             )
-        # elif 72 - dms_to_dd(ASPECTS["Quintile"]["orb"]) < aspect < \
-        #         72 + dms_to_dd(ASPECTS["Quintile"]["orb"]) or \
-        #         288 - dms_to_dd(ASPECTS["Quintile"]["orb"]) < aspect < \
-        #         288 + dms_to_dd(ASPECTS["Quintile"]["orb"]):
-        #     self.create_aspect(
-        #         value = value,
-        #         _value=_value,
-        #         color="purple",
-        #         key=key,
-        #         _key=_key
-        #     )
+        #        elif 72 - dms_to_dd(ASPECTS["Quintile"]["orb"]) < aspect < \
+        #                72 + dms_to_dd(ASPECTS["Quintile"]["orb"]) or \
+        #                288 - dms_to_dd(ASPECTS["Quintile"]["orb"]) < aspect < \
+        #                288 + dms_to_dd(ASPECTS["Quintile"]["orb"]):
+        #            self.create_aspect(
+        #                value = value,
+        #                _value=_value,
+        #                color="purple",
+        #                key=key,
+        #                _key=_key
+        #            )
         elif 90 - dms_to_dd(ASPECTS["Square"]["orb"]) < aspect < \
                 90 + dms_to_dd(ASPECTS["Square"]["orb"]) or \
                 270 - dms_to_dd(ASPECTS["Square"]["orb"]) < aspect < \
@@ -810,39 +806,39 @@ class Canvas(tk.Canvas):
                 key=key,
                 _key=_key
             )
-        # elif 135 - dms_to_dd(ASPECTS["Sesquiquadrate"]["orb"]) < aspect < \
-        #         135 + dms_to_dd(ASPECTS["Sesquiquadrate"]["orb"]) or \
-        #         225 - dms_to_dd(ASPECTS["Sesquiquadrate"]["orb"]) < aspect < \
-        #         225 + dms_to_dd(ASPECTS["Sesquiquadrate"]["orb"]):
-        #     self.create_aspect(
-        #         value = value,
-        #         _value=_value,
-        #         color="orange",
-        #         key=key,
-        #         _key=_key
-        #     )
-        # elif 144 - dms_to_dd(ASPECTS["BiQuintile"]["orb"]) < aspect < \
-        #         144 + dms_to_dd(ASPECTS["BiQuintile"]["orb"]) or \
-        #         216 - dms_to_dd(ASPECTS["BiQuintile"]["orb"]) < aspect < \
-        #         216 + dms_to_dd(ASPECTS["BiQuintile"]["orb"]):
-        #     self.create_aspect(
-        #         value = value,
-        #         _value=_value,
-        #         color="gray",
-        #         key=key,
-        #         _key=_key
-        #     )
-        # elif 150 - dms_to_dd(ASPECTS["Quincunx"]["orb"]) < aspect < \
-        #         150 + dms_to_dd(ASPECTS["Quincunx"]["orb"]) or \
-        #         210 - dms_to_dd(ASPECTS["Quincunx"]["orb"]) < aspect < \
-        #         210 + dms_to_dd(ASPECTS["Quincunx"]["orb"]):
-        #     self.create_aspect(
-        #         value = value,
-        #         _value=_value,
-        #         color="pink",
-        #         key=key,
-        #         _key=_key
-        #     )
+        #        elif 135 - dms_to_dd(ASPECTS["Sesquiquadrate"]["orb"]) < aspect < \
+        #                135 + dms_to_dd(ASPECTS["Sesquiquadrate"]["orb"]) or \
+        #                225 - dms_to_dd(ASPECTS["Sesquiquadrate"]["orb"]) < aspect < \
+        #                225 + dms_to_dd(ASPECTS["Sesquiquadrate"]["orb"]):
+        #            self.create_aspect(
+        #                value = value,
+        #                _value=_value,
+        #                color="orange",
+        #                key=key,
+        #                _key=_key
+        #            )
+        #        elif 144 - dms_to_dd(ASPECTS["BiQuintile"]["orb"]) < aspect < \
+        #                144 + dms_to_dd(ASPECTS["BiQuintile"]["orb"]) or \
+        #                216 - dms_to_dd(ASPECTS["BiQuintile"]["orb"]) < aspect < \
+        #                216 + dms_to_dd(ASPECTS["BiQuintile"]["orb"]):
+        #            self.create_aspect(
+        #                value = value,
+        #                _value=_value,
+        #                color="gray",
+        #                key=key,
+        #                _key=_key
+        #            )
+        #        elif 150 - dms_to_dd(ASPECTS["Quincunx"]["orb"]) < aspect < \
+        #                150 + dms_to_dd(ASPECTS["Quincunx"]["orb"]) or \
+        #                210 - dms_to_dd(ASPECTS["Quincunx"]["orb"]) < aspect < \
+        #                210 + dms_to_dd(ASPECTS["Quincunx"]["orb"]):
+        #            self.create_aspect(
+        #                value = value,
+        #                _value=_value,
+        #                color="pink",
+        #                key=key,
+        #                _key=_key
+        #            )
         elif 180 - dms_to_dd(ASPECTS["Opposite"]["orb"]) < aspect < \
                 180 + dms_to_dd(ASPECTS["Opposite"]["orb"]):
             self.create_aspect(
@@ -1031,10 +1027,10 @@ class Menu(tk.Menu):
         version, _version = "Version:", __version__
         build_date, _build_date = "Built Date:", "04.03.2020"
         update_date, _update_date = "Update Date:", \
-            dt.strftime(
-                dt.fromtimestamp(os.stat(sys.argv[0]).st_mtime),
-                "%d.%m.%Y"
-            )
+                                    dt.strftime(
+                                        dt.fromtimestamp(os.stat(sys.argv[0]).st_mtime),
+                                        "%d.%m.%Y"
+                                    )
         developed_by, _developed_by = "Developed By:", \
                                       "Tanberk Celalettin Kutlu"
         contact, _contact = "Contact:", "tckutlu@gmail.com"
@@ -1048,12 +1044,12 @@ class Menu(tk.Menu):
         tlabel_title.pack()
         for i, j in enumerate(
                 (
-                    version,
-                    build_date,
-                    update_date,
-                    developed_by,
-                    contact,
-                    github
+                        version,
+                        build_date,
+                        update_date,
+                        developed_by,
+                        contact,
+                        github
                 )
         ):
             tlabel_info_1 = tk.Label(
@@ -1065,12 +1061,12 @@ class Menu(tk.Menu):
             tlabel_info_1.grid(row=i, column=0, sticky="w")
         for i, j in enumerate(
                 (
-                    _version,
-                    _build_date,
-                    _update_date,
-                    _developed_by,
-                    _contact,
-                    _github
+                        _version,
+                        _build_date,
+                        _update_date,
+                        _developed_by,
+                        _contact,
+                        _github
                 )
         ):
             if j == _github:
@@ -1208,23 +1204,23 @@ class Frame(tk.Frame):
         self.dates_frame = tk.Frame(master=self.left_frame)
         self.dates_frame.pack()
         self.starting_date = self.entries(
-                master=self.dates_frame,
-                entry_names=[
-                    [*self.entry_names[2:5]],
-                    [*self.entry_names[5:]]
-                ],
-                text="Starting Date",
-                side="left"
-            )
+            master=self.dates_frame,
+            entry_names=[
+                [*self.entry_names[2:5]],
+                [*self.entry_names[5:]]
+            ],
+            text="Starting Date",
+            side="left"
+        )
         self.ending_date = self.entries(
-                master=self.dates_frame,
-                entry_names=[
-                    [*self.entry_names[2:5]],
-                    [*self.entry_names[5:]]
-                ],
-                text="Ending Date",
-                side="left"
-            )
+            master=self.dates_frame,
+            entry_names=[
+                [*self.entry_names[2:5]],
+                [*self.entry_names[5:]]
+            ],
+            text="Ending Date",
+            side="left"
+        )
         self.time_changes = tk.Frame(
             master=self.left_frame,
             bd=1,
@@ -1234,14 +1230,14 @@ class Frame(tk.Frame):
         self.chart_per_sec_scale, self.time_increase_scale = \
             self.time_change_widgets()
         self.current_date = self.entries(
-                master=self.time_changes,
-                entry_names=[
-                    [*self.entry_names[2:5]],
-                    [*self.entry_names[5:]]
-                ],
-                text="Current Date",
-                side="bottom"
-            )
+            master=self.time_changes,
+            entry_names=[
+                [*self.entry_names[2:5]],
+                [*self.entry_names[5:]]
+            ],
+            text="Current Date",
+            side="bottom"
+        )
         for i in self.current_date:
             self.current_date[i]["state"] = "disable"
         self.button_frame = tk.Frame(master=self.left_frame)
@@ -1266,7 +1262,7 @@ class Frame(tk.Frame):
                     "Amount of Time Increase"
                 ],
                 [10, 3600],
-                [.1, 1],
+                [1, 1],
         ):
             label = tk.Label(
                 master=self.time_changes,
@@ -1307,7 +1303,6 @@ class Frame(tk.Frame):
         self.current_date["Second"].insert(
             0, date.second
         )
-##        self.update()
 
     def change_zodiac(
             self, date: dt = None,
@@ -1363,6 +1358,7 @@ class Frame(tk.Frame):
             f" seconds remaining."
 
     def start_command(self):
+        global _start, _c
         s_Y = self.starting_date["Year"].get()
         s_m = self.starting_date["Month"].get()
         s_d = self.starting_date["Day"].get()
@@ -1378,7 +1374,7 @@ class Frame(tk.Frame):
         lat = self.coordinates["Latitude"].get()
         lon = self.coordinates["Longitude"].get()
         try:
-            start = dt.strptime(
+            _start = dt.strptime(
                 f"{s_Y}.{s_m}.{s_d} {s_H}:{s_M}:{s_S}",
                 "%Y.%m.%d %H:%M:%S"
             )
@@ -1399,7 +1395,7 @@ class Frame(tk.Frame):
                 message="Invalid date for ending time."
             )
             return
-        if start >= end:
+        if _start >= end:
             showinfo(
                 title="Info",
                 message="Starting time should be greater "
@@ -1454,8 +1450,8 @@ class Frame(tk.Frame):
                 self.pframe.destroy()
             for i in self.current_date:
                 self.current_date[i]["state"] = "normal"
-            s = (end - start).total_seconds()
-            c = 0
+            s = (end - _start).total_seconds()
+            _c = 0
             n = time()
             self.pframe = tk.Frame(master=self.left_frame)
             pbar = Progressbar(
@@ -1472,27 +1468,38 @@ class Frame(tk.Frame):
             self.pframe.pack()
             pbar.pack()
             plabel.pack()
-            while start < end:
-                start += td(
+
+            def loop():
+                global _start, _c
+                _start += td(
                     seconds=float(
                         self.time_increase_scale.get()
                     )
                 )
-                c += float(self.time_increase_scale.get())
-                pbar["value"] = c
+                _c += float(self.time_increase_scale.get())
+                pbar["value"] = _c
                 pbar["maximum"] = s
-                pstring.set(self.progress_info(c=c, s=s, n=n))
-                sleep(float(self.chart_per_sec_scale.get()))
+                pstring.set(self.progress_info(c=_c, s=s, n=n))
                 if not self.start:
-                    break
-                self.change_current_date(date=start)
-                self.change_zodiac(date=start, lat=lat, lon=lon)
+                    return
+                self.change_current_date(date=_start)
+                self.change_zodiac(date=_start, lat=lat, lon=lon)
                 self.update()
-            if self.start:
-                self.change_current_date(date=end)
-            for i in self.current_date:
-                self.current_date[i]["state"] = "disable"
-            self.start = False
+                if _start < end:
+                    try:
+                        self.after(
+                            int(self.chart_per_sec_scale.get() * 1000), loop
+                        )
+                    except tk.TclError:
+                        pass
+                else:
+                    if self.start:
+                        self.change_current_date(date=end)
+                    for date in self.current_date:
+                        self.current_date[date]["state"] = "disable"
+                    self.start = False
+
+            loop()
 
     def stop_command(self):
         self.start = False
