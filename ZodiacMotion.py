@@ -536,7 +536,7 @@ class Canvas(tk.Canvas):
             self.objects[name] = line
         else:
             self.coords(self.objects[name], x1, y1, x2, y2)
-            self.update()
+##            self.update()
 
     def aspect_line_object(
             self,
@@ -562,7 +562,7 @@ class Canvas(tk.Canvas):
                 self.aspect_objects[(key, _key)] = line
             else:
                 self.coords(self.aspect_objects[(key, _key)], x1, y1, x2, y2)
-                self.update()
+##                self.update()
 
     def text_object(
             self,
@@ -581,7 +581,7 @@ class Canvas(tk.Canvas):
             self.objects[name] = text
         else:
             self.coords(self.objects[name], x, y)
-            self.update()
+##            self.update()
 
     def draw_houses(self):
         self.midpoint_of_houses = []
@@ -1249,10 +1249,7 @@ class Frame(tk.Frame):
         self.start_animation = tk.Button(
             master=self.button_frame,
             text="Start",
-            command=lambda: Thread(
-                target=self.start_command,
-                daemon=True
-            ).start()
+            command=self.start_command
         )
         self.start_animation.pack(side="left", padx=5)
         self.stop_animation = tk.Button(
@@ -1310,7 +1307,7 @@ class Frame(tk.Frame):
         self.current_date["Second"].insert(
             0, date.second
         )
-        self.update()
+##        self.update()
 
     def change_zodiac(
             self, date: dt = None,
@@ -1488,9 +1485,9 @@ class Frame(tk.Frame):
                 sleep(float(self.chart_per_sec_scale.get()))
                 if not self.start:
                     break
-                self.update()
                 self.change_current_date(date=start)
                 self.change_zodiac(date=start, lat=lat, lon=lon)
+                self.update()
             if self.start:
                 self.change_current_date(date=end)
             for i in self.current_date:
