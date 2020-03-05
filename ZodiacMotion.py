@@ -473,7 +473,7 @@ class Canvas(tk.Canvas):
         self.draw_planets()
         self.draw_aspects()
 
-    def draw_oval_object(self, x=400, y=300):
+    def draw_oval_object(self, x: int = 400, y: int = 300):
         self.oval_object(x=x, y=y, r=260, dash=False)
         self.oval_object(x=x, y=y, r=210, dash=False)
         self.oval_object(x=x, y=y, r=165)
@@ -491,8 +491,14 @@ class Canvas(tk.Canvas):
         x2, y2 = self.line_components(degree=degree, r=r2)
         return x1, y1, x2, y2
 
-    def oval_object(self, x, y, r, dash=True):
-        if dash is True:
+    def oval_object(
+            self,
+            x: float = .0,
+            y: float = .0,
+            r: int = 0,
+            dash: bool = True
+    ):
+        if dash:
             dash = (1, 10)
             self.create_oval(
                 x - r,
@@ -514,7 +520,11 @@ class Canvas(tk.Canvas):
             )
 
     def line_object(
-            self, x1, y1, x2, y2,
+            self,
+            x1: float = .0,
+            y1: float = .0,
+            x2: float = .0,
+            y2: float = .0,
             width: int = 2,
             fill: str = "black",
             name: str = ""
@@ -529,7 +539,11 @@ class Canvas(tk.Canvas):
             self.update()
 
     def aspect_line_object(
-            self, x1, y1, x2, y2,
+            self,
+            x1: float = .0,
+            y1: float = .0,
+            x2: float = .0,
+            y2: float = .0,
             width: int = 2,
             fill: str = "black",
             key: str = "",
@@ -551,7 +565,9 @@ class Canvas(tk.Canvas):
                 self.update()
 
     def text_object(
-            self, x, y,
+            self,
+            x: float = .0,
+            y: float = .0,
             width: int = 0,
             _text: str = "",
             font: str = "Arial",
@@ -703,9 +719,9 @@ class Canvas(tk.Canvas):
             degree=_value, r1=r1, r2=r2
         )
         self.aspect_line_object(
-            x2, y2, _x2, _y2, 
-            width=2, 
-            fill=color, 
+            x2, y2, _x2, _y2,
+            width=2,
+            fill=color,
             key=key,
             _key=_key
         )
