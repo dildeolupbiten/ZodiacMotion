@@ -947,7 +947,7 @@ class Menu(tk.Menu):
             else:
                 ASPECTS[j]["orb"] = orb_entries[i].get()
         if error:
-            showinfo(title="Warning", message="Invalid Orb Factor")
+            showinfo(title="Warning", message="Invalid Orb Factor.")
         else:
             toplevel.destroy()
 
@@ -1151,7 +1151,7 @@ class Menu(tk.Menu):
                         h.flush()
                     showinfo(
                         title="Update",
-                        message="Program is updated."
+                        message="Program has been updated."
                     )
                     if os.name == "posix":
                         Popen(
@@ -1388,7 +1388,7 @@ class Frame(tk.Frame):
         except ValueError:
             showinfo(
                 title="Info",
-                message="Invalid date for starting time"
+                message="Invalid date for starting time."
             )
             return
         try:
@@ -1399,7 +1399,7 @@ class Frame(tk.Frame):
         except ValueError:
             showinfo(
                 title="Info",
-                message="Invalid date for ending time"
+                message="Invalid date for ending time."
             )
             return
         if start >= end:
