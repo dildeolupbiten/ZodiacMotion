@@ -1108,9 +1108,9 @@ class Menu(tk.Menu):
     @staticmethod
     def update_script():
         url_1 = "https://raw.githubusercontent.com/dildeolupbiten/" \
-                "TkMidpoint/master/ZodiacMotion.py"
+                "ZodiacMotion/master/ZodiacMotion.py"
         url_2 = "https://raw.githubusercontent.com/dildeolupbiten/" \
-                "TkMidpoint/master/README.md"
+                "ZodiacMotion/master/README.md"
         data_1 = urlopen(
             url=url_1,
             context=ssl.SSLContext(ssl.PROTOCOL_SSLv23)
