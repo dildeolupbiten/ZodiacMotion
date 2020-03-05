@@ -559,7 +559,9 @@ class Canvas(tk.Canvas):
                 )
                 self.aspect_objects[(key, _key)] = line
             else:
-                self.coords(self.aspect_objects[(key, _key)], x1, y1, x2, y2)
+                self.coords(
+                    self.aspect_objects[(key, _key)], x1, y1, x2, y2
+                )
 
     def text_object(
             self,
@@ -740,28 +742,28 @@ class Canvas(tk.Canvas):
                 key=key,
                 _key=_key
             )
-        #        elif 30 - dms_to_dd(ASPECTS["Semi-Sextile"]["orb"]) < aspect <
-        #                30 + dms_to_dd(ASPECTS["Semi-Sextile"]["orb"]) or \
-        #                330 - dms_to_dd(ASPECTS["Semi-Sextile"]["orb"]) < \
-        #                aspect < 330 + dms_to_dd(ASPECTS["Semi-Sextile"]["orb"]):
-        #            self.create_aspect(
-        #                value = value,
-        #                _value=_value,
-        #                color="black",
-        #                key=key,
-        #                _key=_key
-        #            )
-        #        elif 45 - dms_to_dd(ASPECTS["Semi-Square"]["orb"]) < aspect < \
-        #                45 + dms_to_dd(ASPECTS["Semi-Square"]["orb"]) or \
-        #                315 - dms_to_dd(ASPECTS["Semi-Square"]["orb"]) < aspect < \
-        #                315 + dms_to_dd(ASPECTS["Semi-Square"]["orb"]):
-        #            self.create_aspect(
-        #                value = value,
-        #                _value=_value,
-        #                color="black",
-        #                key=key,
-        #                _key=_key
-        #            )
+#        elif 30 - dms_to_dd(ASPECTS["Semi-Sextile"]["orb"]) < aspect <
+#                30 + dms_to_dd(ASPECTS["Semi-Sextile"]["orb"]) or \
+#                330 - dms_to_dd(ASPECTS["Semi-Sextile"]["orb"]) < \
+#                aspect < 330 + dms_to_dd(ASPECTS["Semi-Sextile"]["orb"]):
+#            self.create_aspect(
+#                value = value,
+#                _value=_value,
+#                color="black",
+#                key=key,
+#                _key=_key
+#            )
+#        elif 45 - dms_to_dd(ASPECTS["Semi-Square"]["orb"]) < aspect < \
+#                45 + dms_to_dd(ASPECTS["Semi-Square"]["orb"]) or \
+#                315 - dms_to_dd(ASPECTS["Semi-Square"]["orb"]) < aspect < \
+#                315 + dms_to_dd(ASPECTS["Semi-Square"]["orb"]):
+#            self.create_aspect(
+#                value = value,
+#                _value=_value,
+#                color="black",
+#                key=key,
+#                _key=_key
+#            )
         elif 60 - dms_to_dd(ASPECTS["Sextile"]["orb"]) < aspect < \
                 60 + dms_to_dd(ASPECTS["Sextile"]["orb"]) or \
                 300 - dms_to_dd(ASPECTS["Sextile"]["orb"]) < aspect < \
@@ -773,17 +775,17 @@ class Canvas(tk.Canvas):
                 key=key,
                 _key=_key
             )
-        #        elif 72 - dms_to_dd(ASPECTS["Quintile"]["orb"]) < aspect < \
-        #                72 + dms_to_dd(ASPECTS["Quintile"]["orb"]) or \
-        #                288 - dms_to_dd(ASPECTS["Quintile"]["orb"]) < aspect < \
-        #                288 + dms_to_dd(ASPECTS["Quintile"]["orb"]):
-        #            self.create_aspect(
-        #                value = value,
-        #                _value=_value,
-        #                color="purple",
-        #                key=key,
-        #                _key=_key
-        #            )
+#        elif 72 - dms_to_dd(ASPECTS["Quintile"]["orb"]) < aspect < \
+#                72 + dms_to_dd(ASPECTS["Quintile"]["orb"]) or \
+#                288 - dms_to_dd(ASPECTS["Quintile"]["orb"]) < aspect < \
+#                288 + dms_to_dd(ASPECTS["Quintile"]["orb"]):
+#            self.create_aspect(
+#                value = value,
+#                _value=_value,
+#                color="purple",
+#                key=key,
+#                _key=_key
+#            )
         elif 90 - dms_to_dd(ASPECTS["Square"]["orb"]) < aspect < \
                 90 + dms_to_dd(ASPECTS["Square"]["orb"]) or \
                 270 - dms_to_dd(ASPECTS["Square"]["orb"]) < aspect < \
@@ -806,39 +808,39 @@ class Canvas(tk.Canvas):
                 key=key,
                 _key=_key
             )
-        #        elif 135 - dms_to_dd(ASPECTS["Sesquiquadrate"]["orb"]) < aspect < \
-        #                135 + dms_to_dd(ASPECTS["Sesquiquadrate"]["orb"]) or \
-        #                225 - dms_to_dd(ASPECTS["Sesquiquadrate"]["orb"]) < aspect < \
-        #                225 + dms_to_dd(ASPECTS["Sesquiquadrate"]["orb"]):
-        #            self.create_aspect(
-        #                value = value,
-        #                _value=_value,
-        #                color="orange",
-        #                key=key,
-        #                _key=_key
-        #            )
-        #        elif 144 - dms_to_dd(ASPECTS["BiQuintile"]["orb"]) < aspect < \
-        #                144 + dms_to_dd(ASPECTS["BiQuintile"]["orb"]) or \
-        #                216 - dms_to_dd(ASPECTS["BiQuintile"]["orb"]) < aspect < \
-        #                216 + dms_to_dd(ASPECTS["BiQuintile"]["orb"]):
-        #            self.create_aspect(
-        #                value = value,
-        #                _value=_value,
-        #                color="gray",
-        #                key=key,
-        #                _key=_key
-        #            )
-        #        elif 150 - dms_to_dd(ASPECTS["Quincunx"]["orb"]) < aspect < \
-        #                150 + dms_to_dd(ASPECTS["Quincunx"]["orb"]) or \
-        #                210 - dms_to_dd(ASPECTS["Quincunx"]["orb"]) < aspect < \
-        #                210 + dms_to_dd(ASPECTS["Quincunx"]["orb"]):
-        #            self.create_aspect(
-        #                value = value,
-        #                _value=_value,
-        #                color="pink",
-        #                key=key,
-        #                _key=_key
-        #            )
+#        elif 135 - dms_to_dd(ASPECTS["Sesquiquadrate"]["orb"]) < aspect < \
+#                135 + dms_to_dd(ASPECTS["Sesquiquadrate"]["orb"]) or \
+#                225 - dms_to_dd(ASPECTS["Sesquiquadrate"]["orb"]) < aspect < \
+#                225 + dms_to_dd(ASPECTS["Sesquiquadrate"]["orb"]):
+#            self.create_aspect(
+#                value = value,
+#                _value=_value,
+#                color="orange",
+#                key=key,
+#                _key=_key
+#            )
+#        elif 144 - dms_to_dd(ASPECTS["BiQuintile"]["orb"]) < aspect < \
+#                144 + dms_to_dd(ASPECTS["BiQuintile"]["orb"]) or \
+#                216 - dms_to_dd(ASPECTS["BiQuintile"]["orb"]) < aspect < \
+#                216 + dms_to_dd(ASPECTS["BiQuintile"]["orb"]):
+#            self.create_aspect(
+#                value = value,
+#                _value=_value,
+#                color="gray",
+#                key=key,
+#                _key=_key
+#            )
+#        elif 150 - dms_to_dd(ASPECTS["Quincunx"]["orb"]) < aspect < \
+#                150 + dms_to_dd(ASPECTS["Quincunx"]["orb"]) or \
+#                210 - dms_to_dd(ASPECTS["Quincunx"]["orb"]) < aspect < \
+#                210 + dms_to_dd(ASPECTS["Quincunx"]["orb"]):
+#            self.create_aspect(
+#                value = value,
+#                _value=_value,
+#                color="pink",
+#                key=key,
+#                _key=_key
+#            )
         elif 180 - dms_to_dd(ASPECTS["Opposite"]["orb"]) < aspect < \
                 180 + dms_to_dd(ASPECTS["Opposite"]["orb"]):
             self.create_aspect(
@@ -1027,15 +1029,15 @@ class Menu(tk.Menu):
         version, _version = "Version:", __version__
         build_date, _build_date = "Built Date:", "04.03.2020"
         update_date, _update_date = "Update Date:", \
-                                    dt.strftime(
-                                        dt.fromtimestamp(os.stat(sys.argv[0]).st_mtime),
-                                        "%d.%m.%Y"
-                                    )
+            dt.strftime(
+                dt.fromtimestamp(os.stat(sys.argv[0]).st_mtime),
+                "%d.%m.%Y"
+            )
         developed_by, _developed_by = "Developed By:", \
-                                      "Tanberk Celalettin Kutlu"
+            "Tanberk Celalettin Kutlu"
         contact, _contact = "Contact:", "tckutlu@gmail.com"
         github, _github = "GitHub:", \
-                          "https://github.com/dildeolupbiten/ZodiacMotion"
+            "https://github.com/dildeolupbiten/ZodiacMotion"
         tframe1 = tk.Frame(master=toplevel, bd="2", relief="groove")
         tframe1.pack(fill="both")
         tframe2 = tk.Frame(master=toplevel)
@@ -1044,12 +1046,12 @@ class Menu(tk.Menu):
         tlabel_title.pack()
         for i, j in enumerate(
                 (
-                        version,
-                        build_date,
-                        update_date,
-                        developed_by,
-                        contact,
-                        github
+                    version,
+                    build_date,
+                    update_date,
+                    developed_by,
+                    contact,
+                    github
                 )
         ):
             tlabel_info_1 = tk.Label(
@@ -1061,12 +1063,12 @@ class Menu(tk.Menu):
             tlabel_info_1.grid(row=i, column=0, sticky="w")
         for i, j in enumerate(
                 (
-                        _version,
-                        _build_date,
-                        _update_date,
-                        _developed_by,
-                        _contact,
-                        _github
+                    _version,
+                    _build_date,
+                    _update_date,
+                    _developed_by,
+                    _contact,
+                    _github
                 )
         ):
             if j == _github:
