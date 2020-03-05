@@ -258,7 +258,7 @@ def reverse_convert_degree(degree: float = 0, sign: str = ""):
     return degree + 30 * [*SIGNS].index(sign)
 
 
-def dms_to_dd(dms):
+def dms_to_dd(dms: str = ""):
     dms = dms.replace(" ", "")
     dms = dms.replace("\u00b0", " ").replace("\'", " ").replace("\"", " ")
     degree = int(dms.split(" ")[0])
@@ -1021,7 +1021,7 @@ class Menu(tk.Menu):
         apply_button.pack()
 
     @staticmethod
-    def callback(url):
+    def callback(url: str = ""):
         open_new(url)
 
     def about(self):
@@ -1510,9 +1510,9 @@ class Frame(tk.Frame):
             master=None,
             entry_names: list = [],
             text: str = "",
+            side: str = "",
             pady: int = 0,
             padx: int = 0,
-            side: str = ""
     ):
         entries = {}
         entry_frame = tk.Frame(master=master, bd=1, relief="sunken")
