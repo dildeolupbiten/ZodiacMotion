@@ -16,7 +16,6 @@ from webbrowser import open_new
 from platform import architecture
 from math import cos, sin, radians
 from urllib.request import urlopen
-from datetime import 
 from tkinter.ttk import Progressbar
 from tkinter.messagebox import showinfo
 from datetime import (datetime as dt, timedelta as td)
