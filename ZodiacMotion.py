@@ -1605,8 +1605,7 @@ def main():
     root = tk.Tk()
     root.title("ZodiacMotion")
     Menu(master=root)
-    frame = Frame(master=root)
-    frame.mainloop()
+    Frame(master=root).mainloop()
 
 
 if __name__ == "__main__":
