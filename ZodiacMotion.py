@@ -27,10 +27,10 @@ except ModuleNotFoundError:
     os.system("pip3 install python-dateutil")
     from dateutil import tz
 try:
-    from pytz import utc, timezone
+    from pytz import timezone
 except ModuleNotFoundError:
     os.system("pip3 install pytz")
-    from pytz import utc, timezone
+    from pytz import timezone
 try:
     from timezonefinder import TimezoneFinder
 except ModuleNotFoundError:
