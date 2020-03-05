@@ -451,6 +451,7 @@ class Canvas(tk.Canvas):
         self.zodiac = zodiac
         self.objects = {}
         self.aspect_objects = {}
+        self.midpoint_of_houses = []
         self.count = -1
         self.new_asc = ""
         self.old_asc = ""
@@ -464,7 +465,6 @@ class Canvas(tk.Canvas):
         self.signs = [i[0] for i in self.sign_positions]
         self.signs = [self.signs[-1]] + self.signs[:-1]
         self.pack()
-        self.midpoint_of_houses = []
         self.draw_oval_object()
         self.draw_houses()
         self.draw_signs()
