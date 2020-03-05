@@ -1214,7 +1214,7 @@ class Frame(tk.Frame):
                     [*self.entry_names[5:]]
                 ],
                 text="Starting Date",
-                side="left",
+                side="left"
             )
         self.ending_date = self.entries(
                 master=self.dates_frame,
@@ -1223,7 +1223,7 @@ class Frame(tk.Frame):
                     [*self.entry_names[5:]]
                 ],
                 text="Ending Date",
-                side="left",
+                side="left"
             )
         self.time_changes = tk.Frame(
             master=self.left_frame,
@@ -1240,7 +1240,7 @@ class Frame(tk.Frame):
                     [*self.entry_names[5:]]
                 ],
                 text="Current Date",
-                side="bottom",
+                side="bottom"
             )
         for i in self.current_date:
             self.current_date[i]["state"] = "disable"
@@ -1252,7 +1252,7 @@ class Frame(tk.Frame):
             command=lambda: Thread(
                 target=self.start_command,
                 daemon=True
-            ).start(),
+            ).start()
         )
         self.start_animation.pack(side="left", padx=5)
         self.stop_animation = tk.Button(
@@ -1285,7 +1285,7 @@ class Frame(tk.Frame):
                 _from=var[0][2].get(),
                 _to=var[0][1].get(),
                 digit=6,
-                text="Seconds",
+                text="Seconds"
             )
             yield scale
 
