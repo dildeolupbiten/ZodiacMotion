@@ -19,4 +19,3 @@ from tkinter.ttk import Progressbar
 from tkinter.messagebox import showinfo
 from timezonefinder import TimezoneFinder
 from datetime import (datetime as dt, timedelta as td)
-
