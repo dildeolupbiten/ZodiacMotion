@@ -1,0 +1,16 @@
+./Eph/Whl/pyswisseph-2.5.1.post0-cp38-cp38-win_amd64.whl ; sys_platform == 'win32' and python_version == '3.8' and (platform_machine == "x86_64" or platform_machine == "AMD64")
+
+./Eph/Whl/pyswisseph-2.5.1.post0-cp37-cp37m-win_amd64.whl ; sys_platform == 'win32' and python_version == '3.7' and (platform_machine == "x86_64" or platform_machine == "AMD64")
+
+./Eph/Whl/pyswisseph-2.5.1.post0-cp36-cp36m-win_amd64.whl ; sys_platform == 'win32' and python_version == '3.6' and (platform_machine == "x86_64" or platform_machine == "AMD64")
+
+./Eph/Whl/pyswisseph-2.5.1.post0-cp38-cp38-win32.whl ; sys_platform == 'win32' and python_version == '3.8' and (platform_machine == "x86_32" or platform_machine == "AMD32")
+
+./Eph/Whl/pyswisseph-2.5.1.post0-cp37-cp37m-win32.whl ; sys_platform == 'win32' and python_version == '3.7' and (platform_machine == "x86_32" or platform_machine == "AMD32")
+
+./Eph/Whl/pyswisseph-2.5.1.post0-cp36-cp36m-win32.whl ; sys_platform == 'win32' and python_version == '3.6' and (platform_machine == "x86_32" or platform_machine == "AMD32")
+
+pyswisseph ; sys_platform != 'win32'
+pytz
+timezonefinder
+python-dateutil
