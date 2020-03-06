@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from .constants import ASPECTS, HOUSE_SYSTEMS
+from .constants import ASPECTS, HOUSE_SYSTEMS, HSYS
 from .modules import os, re, tk, dt, sys, ssl
 from .modules import showinfo, Popen, open_new, urlopen
 from Scripts import __version__
