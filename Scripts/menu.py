@@ -26,10 +26,6 @@ class Menu(tk.Menu):
             label="About",
             command=self.about
         )
-        self.help.add_command(
-            label="Check for updates",
-            command=self.update_script
-        )
 
     def choose_orb_factor(self):
         toplevel = tk.Toplevel()
@@ -232,64 +228,4 @@ class Menu(tk.Menu):
                     font="Arial 12"
                 )
             tlabel_info_2.grid(row=i, column=1, sticky="w")
-
-    @staticmethod
-    def update_script():
-        url_1 = "https://raw.githubusercontent.com/dildeolupbiten/" \
-                "ZodiacMotion/master/ZodiacMotion.py"
-        url_2 = "https://raw.githubusercontent.com/dildeolupbiten/" \
-                "ZodiacMotion/master/README.md"
-        data_1 = urlopen(
-            url=url_1,
-            context=ssl.SSLContext(ssl.PROTOCOL_SSLv23)
-        )
-        data_2 = urlopen(
-            url=url_2,
-            context=ssl.SSLContext(ssl.PROTOCOL_SSLv23)
-        )
-        with open(
-                file="ZodiacMotion.py",
-                mode="r",
-                encoding="utf-8"
-        ) as f:
-            var_1 = [i.decode("utf-8") for i in data_1]
-            var_2 = [i.decode("utf-8") for i in data_2]
-            var_3 = [i for i in f]
-            if var_1 == var_3:
-                showinfo(
-                    title="Update",
-                    message="Program is up-to-date."
-                )
-            else:
-                with open(
-                        file="README.md",
-                        mode="w",
-                        encoding="utf-8"
-                ) as g:
-                    for i in var_2:
-                        g.write(i)
-                        g.flush()
-                with open(
-                        file="ZodiacMotion.py",
-                        mode="w",
-                        encoding="utf-8"
-                ) as h:
-                    for i in var_1:
-                        h.write(i)
-                        h.flush()
-                    showinfo(
-                        title="Update",
-                        message="Program has been updated."
-                    )
-                    if os.name == "posix":
-                        Popen(
-                            ["python3", "ZodiacMotion.py"]
-                        )
-                        import signal
-                        os.kill(os.getpid(), signal.SIGKILL)
-                    elif os.name == "nt":
-                        Popen(
-                            ["python", "ZodiacMotion.py"]
-                        )
-                        os.system(f"TASKKILL /F /PID {os.getpid()}")
 
