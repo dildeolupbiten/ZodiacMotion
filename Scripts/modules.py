@@ -7,9 +7,9 @@ import ssl
 import tkinter as tk
 import swisseph as swe
 
-from time import time, sleep
 from dateutil import tz
 from pytz import timezone
+from time import time, sleep
 from subprocess import Popen
 from webbrowser import open_new
 from platform import architecture
