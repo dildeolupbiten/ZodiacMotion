@@ -8,6 +8,7 @@ from Scripts.frame import Frame
 
 def main():
     root = tk.Tk()
+    root.title("ZodiacMotion")
     Menu(master=root)
     Frame(master=root).mainloop()
 
