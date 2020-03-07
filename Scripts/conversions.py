@@ -20,4 +20,3 @@ def dms_to_dd(dms: str = ""):
     minute = float(dms.split(" ")[1]) / 60
     second = float(dms.split(" ")[2]) / 3600
     return degree + minute + second
-

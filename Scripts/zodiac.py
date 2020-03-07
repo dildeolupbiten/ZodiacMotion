@@ -182,4 +182,3 @@ class Zodiac:
                     ]
                 )
         return planet_positions, house_positions, sign_positions
-

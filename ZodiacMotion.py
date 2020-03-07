@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from Scripts.modules import tk
-from Scripts.menu import Menu
-from Scripts.frame import Frame
+from Scripts.window import Frame, Menu
 
 
 def main():
@@ -15,4 +14,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

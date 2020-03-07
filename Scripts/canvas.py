@@ -437,4 +437,3 @@ class Canvas(tk.Canvas):
                         key=key,
                         _key=_key
                     )
-

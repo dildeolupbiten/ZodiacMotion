@@ -164,6 +164,3 @@ HOUSE_SYSTEMS = {
     "Equal": "E",
     "Whole Signs": "W"
 }
-
-HSYS = "P"
-
