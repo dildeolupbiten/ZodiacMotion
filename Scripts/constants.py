@@ -162,7 +162,6 @@ HOUSE_SYSTEMS = {
     "Regiomontanus": "R",
     "Campanus": "C",
     "Equal": "E",
-    "Whole Signs": "W"
+    "Whole Signs": "W",
+    "Default": "P"
 }
-
-HSYS = "P"

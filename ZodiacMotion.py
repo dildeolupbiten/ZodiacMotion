@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 
 from Scripts.modules import tk
-from Scripts.window import Frame, Menu
+from Scripts.frame import Frame
+from Scripts.menu import Menu
 
 
 def main():
