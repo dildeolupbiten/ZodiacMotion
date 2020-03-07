@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-from Scripts.modules import tk
 from Scripts.menu import Menu
+from Scripts.modules import tk
 from Scripts.frame import Frame
 
 
