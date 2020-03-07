@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from .menu import Menu
 from .zodiac import Zodiac
 from .modules import tk, cos, sin, radians
 from .constants import PLANETS, SIGNS, ASPECTS
@@ -295,9 +296,12 @@ class Canvas(tk.Canvas):
             key: str = "",
             _key: str = ""
     ):
-        if 0 < aspect < dms_to_dd(ASPECTS["Conjunction"]["orb"]) or \
-                360 - dms_to_dd(ASPECTS["Conjunction"]["orb"]) < \
-                aspect < 360:
+        if "Conjunction" in Menu.SELECTED_ASPECTS and (
+                0 < aspect <
+                dms_to_dd(ASPECTS["Conjunction"]["orb"]) or
+                360 - dms_to_dd(ASPECTS["Conjunction"]["orb"]) <
+                aspect < 360
+        ):
             self.create_aspect(
                 value=value,
                 _value=_value,
@@ -305,32 +309,38 @@ class Canvas(tk.Canvas):
                 key=key,
                 _key=_key
             )
-#        elif 30 - dms_to_dd(ASPECTS["Semi-Sextile"]["orb"]) < aspect <
-#                30 + dms_to_dd(ASPECTS["Semi-Sextile"]["orb"]) or \
-#                330 - dms_to_dd(ASPECTS["Semi-Sextile"]["orb"]) < \
-#                aspect < 330 + dms_to_dd(ASPECTS["Semi-Sextile"]["orb"]):
-#            self.create_aspect(
-#                value = value,
-#                _value=_value,
-#                color="black",
-#                key=key,
-#                _key=_key
-#            )
-#        elif 45 - dms_to_dd(ASPECTS["Semi-Square"]["orb"]) < aspect < \
-#                45 + dms_to_dd(ASPECTS["Semi-Square"]["orb"]) or \
-#                315 - dms_to_dd(ASPECTS["Semi-Square"]["orb"]) < aspect < \
-#                315 + dms_to_dd(ASPECTS["Semi-Square"]["orb"]):
-#            self.create_aspect(
-#                value = value,
-#                _value=_value,
-#                color="black",
-#                key=key,
-#                _key=_key
-#            )
-        elif 60 - dms_to_dd(ASPECTS["Sextile"]["orb"]) < aspect < \
-                60 + dms_to_dd(ASPECTS["Sextile"]["orb"]) or \
-                300 - dms_to_dd(ASPECTS["Sextile"]["orb"]) < aspect < \
-                300 + dms_to_dd(ASPECTS["Sextile"]["orb"]):
+        elif "Semi-Sextile" in Menu.SELECTED_ASPECTS and (
+                30 - dms_to_dd(ASPECTS["Semi-Sextile"]["orb"]) < aspect <
+                30 + dms_to_dd(ASPECTS["Semi-Sextile"]["orb"]) or
+                330 - dms_to_dd(ASPECTS["Semi-Sextile"]["orb"]) <
+                aspect < 330 + dms_to_dd(ASPECTS["Semi-Sextile"]["orb"])
+        ):
+            self.create_aspect(
+                value=value,
+                _value=_value,
+                color="black",
+                key=key,
+                _key=_key
+            )
+        elif "Semi-Square" in Menu.SELECTED_ASPECTS and (
+                45 - dms_to_dd(ASPECTS["Semi-Square"]["orb"]) < aspect <
+                45 + dms_to_dd(ASPECTS["Semi-Square"]["orb"]) or
+                315 - dms_to_dd(ASPECTS["Semi-Square"]["orb"]) < aspect <
+                315 + dms_to_dd(ASPECTS["Semi-Square"]["orb"])
+        ):
+            self.create_aspect(
+                value=value,
+                _value=_value,
+                color="black",
+                key=key,
+                _key=_key
+            )
+        elif "Sextile" in Menu.SELECTED_ASPECTS and (
+                60 - dms_to_dd(ASPECTS["Sextile"]["orb"]) < aspect <
+                60 + dms_to_dd(ASPECTS["Sextile"]["orb"]) or
+                300 - dms_to_dd(ASPECTS["Sextile"]["orb"]) < aspect <
+                300 + dms_to_dd(ASPECTS["Sextile"]["orb"])
+        ):
             self.create_aspect(
                 value=value,
                 _value=_value,
@@ -338,21 +348,25 @@ class Canvas(tk.Canvas):
                 key=key,
                 _key=_key
             )
-#        elif 72 - dms_to_dd(ASPECTS["Quintile"]["orb"]) < aspect < \
-#                72 + dms_to_dd(ASPECTS["Quintile"]["orb"]) or \
-#                288 - dms_to_dd(ASPECTS["Quintile"]["orb"]) < aspect < \
-#                288 + dms_to_dd(ASPECTS["Quintile"]["orb"]):
-#            self.create_aspect(
-#                value = value,
-#                _value=_value,
-#                color="purple",
-#                key=key,
-#                _key=_key
-#            )
-        elif 90 - dms_to_dd(ASPECTS["Square"]["orb"]) < aspect < \
-                90 + dms_to_dd(ASPECTS["Square"]["orb"]) or \
-                270 - dms_to_dd(ASPECTS["Square"]["orb"]) < aspect < \
-                270 + dms_to_dd(ASPECTS["Square"]["orb"]):
+        elif "Quintile" in Menu.SELECTED_ASPECTS and (
+                72 - dms_to_dd(ASPECTS["Quintile"]["orb"]) < aspect <
+                72 + dms_to_dd(ASPECTS["Quintile"]["orb"]) or
+                288 - dms_to_dd(ASPECTS["Quintile"]["orb"]) < aspect <
+                288 + dms_to_dd(ASPECTS["Quintile"]["orb"])
+        ):
+            self.create_aspect(
+                value=value,
+                _value=_value,
+                color="purple",
+                key=key,
+                _key=_key
+            )
+        elif "Square" in Menu.SELECTED_ASPECTS and (
+                90 - dms_to_dd(ASPECTS["Square"]["orb"]) < aspect <
+                90 + dms_to_dd(ASPECTS["Square"]["orb"]) or
+                270 - dms_to_dd(ASPECTS["Square"]["orb"]) < aspect <
+                270 + dms_to_dd(ASPECTS["Square"]["orb"])
+        ):
             self.create_aspect(
                 value=value,
                 _value=_value,
@@ -360,10 +374,12 @@ class Canvas(tk.Canvas):
                 key=key,
                 _key=_key
             )
-        elif 120 - dms_to_dd(ASPECTS["Trine"]["orb"]) < aspect < \
-                120 + dms_to_dd(ASPECTS["Trine"]["orb"]) or \
-                240 - dms_to_dd(ASPECTS["Trine"]["orb"]) < aspect < \
-                240 + dms_to_dd(ASPECTS["Trine"]["orb"]):
+        elif "Trine" in Menu.SELECTED_ASPECTS and (
+                120 - dms_to_dd(ASPECTS["Trine"]["orb"]) < aspect <
+                120 + dms_to_dd(ASPECTS["Trine"]["orb"]) or
+                240 - dms_to_dd(ASPECTS["Trine"]["orb"]) < aspect <
+                240 + dms_to_dd(ASPECTS["Trine"]["orb"])
+        ):
             self.create_aspect(
                 value=value,
                 _value=_value,
@@ -371,41 +387,49 @@ class Canvas(tk.Canvas):
                 key=key,
                 _key=_key
             )
-#        elif 135 - dms_to_dd(ASPECTS["Sesquiquadrate"]["orb"]) < aspect < \
-#                135 + dms_to_dd(ASPECTS["Sesquiquadrate"]["orb"]) or \
-#                225 - dms_to_dd(ASPECTS["Sesquiquadrate"]["orb"]) < aspect < \
-#                225 + dms_to_dd(ASPECTS["Sesquiquadrate"]["orb"]):
-#            self.create_aspect(
-#                value = value,
-#                _value=_value,
-#                color="orange",
-#                key=key,
-#                _key=_key
-#            )
-#        elif 144 - dms_to_dd(ASPECTS["BiQuintile"]["orb"]) < aspect < \
-#                144 + dms_to_dd(ASPECTS["BiQuintile"]["orb"]) or \
-#                216 - dms_to_dd(ASPECTS["BiQuintile"]["orb"]) < aspect < \
-#                216 + dms_to_dd(ASPECTS["BiQuintile"]["orb"]):
-#            self.create_aspect(
-#                value = value,
-#                _value=_value,
-#                color="gray",
-#                key=key,
-#                _key=_key
-#            )
-#        elif 150 - dms_to_dd(ASPECTS["Quincunx"]["orb"]) < aspect < \
-#                150 + dms_to_dd(ASPECTS["Quincunx"]["orb"]) or \
-#                210 - dms_to_dd(ASPECTS["Quincunx"]["orb"]) < aspect < \
-#                210 + dms_to_dd(ASPECTS["Quincunx"]["orb"]):
-#            self.create_aspect(
-#                value = value,
-#                _value=_value,
-#                color="pink",
-#                key=key,
-#                _key=_key
-#            )
-        elif 180 - dms_to_dd(ASPECTS["Opposite"]["orb"]) < aspect < \
-                180 + dms_to_dd(ASPECTS["Opposite"]["orb"]):
+        elif "Sesquiquadrate" in Menu.SELECTED_ASPECTS and (
+                135 - dms_to_dd(ASPECTS["Sesquiquadrate"]["orb"]) < aspect <
+                135 + dms_to_dd(ASPECTS["Sesquiquadrate"]["orb"]) or
+                225 - dms_to_dd(ASPECTS["Sesquiquadrate"]["orb"]) < aspect <
+                225 + dms_to_dd(ASPECTS["Sesquiquadrate"]["orb"])
+        ):
+            self.create_aspect(
+                value=value,
+                _value=_value,
+                color="orange",
+                key=key,
+                _key=_key
+            )
+        elif "BiQuintile" in Menu.SELECTED_ASPECTS and (
+                144 - dms_to_dd(ASPECTS["BiQuintile"]["orb"]) < aspect <
+                144 + dms_to_dd(ASPECTS["BiQuintile"]["orb"]) or
+                216 - dms_to_dd(ASPECTS["BiQuintile"]["orb"]) < aspect <
+                216 + dms_to_dd(ASPECTS["BiQuintile"]["orb"])
+        ):
+            self.create_aspect(
+                value=value,
+                _value=_value,
+                color="gray",
+                key=key,
+                _key=_key
+            )
+        elif "Quincunx" in Menu.SELECTED_ASPECTS and (
+                150 - dms_to_dd(ASPECTS["Quincunx"]["orb"]) < aspect <
+                150 + dms_to_dd(ASPECTS["Quincunx"]["orb"]) or
+                210 - dms_to_dd(ASPECTS["Quincunx"]["orb"]) < aspect <
+                210 + dms_to_dd(ASPECTS["Quincunx"]["orb"])
+        ):
+            self.create_aspect(
+                value=value,
+                _value=_value,
+                color="pink",
+                key=key,
+                _key=_key
+            )
+        elif "Opposite" in Menu.SELECTED_ASPECTS and (
+                180 - dms_to_dd(ASPECTS["Opposite"]["orb"]) < aspect <
+                180 + dms_to_dd(ASPECTS["Opposite"]["orb"])
+        ):
             self.create_aspect(
                 value=value,
                 _value=_value,

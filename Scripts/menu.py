@@ -6,7 +6,8 @@ from .constants import ASPECTS, HOUSE_SYSTEMS, PLANETS
 
 
 class Menu(tk.Menu):
-    SELECTED = []
+    SELECTED_PLANETS = []
+    SELECTED_ASPECTS = []
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -28,6 +29,10 @@ class Menu(tk.Menu):
         self.select.add_command(
             label="Select Objects",
             command=self.select_objects
+        )
+        self.select.add_command(
+            label="Select Aspects",
+            command=self.select_aspect
         )
         self.help.add_command(
             label="About",
@@ -56,7 +61,7 @@ class Menu(tk.Menu):
         for i, j in enumerate(PLANETS):
             if j not in ["Asc", "MC"]:
                 var = tk.StringVar()
-                if j in self.SELECTED:
+                if j in self.SELECTED_PLANETS:
                     var.set("1")
                 else:
                     var.set("0")
@@ -67,7 +72,7 @@ class Menu(tk.Menu):
                 )
                 checkbutton.grid(row=i + 1, column=0, sticky="w")
                 checkbuttons[j] = [checkbutton, var]
-        if len(self.SELECTED) == len([*PLANETS][:-1]):
+        if len(self.SELECTED_PLANETS) == len([*PLANETS][:-1]):
             check_all.set("1")
         select_all["command"] = lambda: self.check_all_command(
             check_all=check_all,
@@ -76,9 +81,10 @@ class Menu(tk.Menu):
         apply_button = tk.Button(
             master=button_frame,
             text="Apply",
-            command=lambda: self.apply_planet_selection(
+            command=lambda: self.apply_selection(
                 toplevel=toplevel,
                 checkbuttons=checkbuttons,
+                selection="planets"
             )
         )
         apply_button.pack()
@@ -95,16 +101,72 @@ class Menu(tk.Menu):
                 values[0].configure(variable=values[-1])
 
     @classmethod
-    def apply_planet_selection(
+    def apply_selection(
             cls,
             toplevel: tk.Toplevel,
-            checkbuttons: dict = {}
+            checkbuttons: dict = {},
+            selection: str = ""
     ):
-        cls.SELECTED = []
+        if selection == "planets":
+            cls.SELECTED_PLANETS = []
+        elif selection == "aspects":
+            cls.SELECTED_ASPECTS = []
         for k, v in checkbuttons.items():
             if v[1].get() == "1":
-                cls.SELECTED.append(k)
+                if selection == "planets":
+                    cls.SELECTED_PLANETS.append(k)
+                elif selection == "aspects":
+                    cls.SELECTED_ASPECTS.append(k)
         toplevel.destroy()
+
+    def select_aspect(self):
+        toplevel = tk.Toplevel()
+        toplevel.title("Select Aspects")
+        toplevel.geometry("200x310")
+        toplevel.resizable(width=False, height=False)
+        planet_frame = tk.Frame(master=toplevel)
+        planet_frame.pack(side="top")
+        button_frame = tk.Frame(master=toplevel)
+        button_frame.pack(side="bottom")
+        checkbuttons = {}
+        check_all = tk.StringVar()
+        check_all.set("0")
+        select_all = tk.Checkbutton(
+            master=planet_frame,
+            text="Check/Uncheck All",
+            variable=check_all
+        )
+        select_all.grid(row=0, column=0, sticky="w")
+        checkbuttons["Check/Uncheck All"] = [select_all, check_all]
+        for i, j in enumerate(ASPECTS):
+            var = tk.StringVar()
+            if j in self.SELECTED_ASPECTS:
+                var.set("1")
+            else:
+                var.set("0")
+            checkbutton = tk.Checkbutton(
+                master=planet_frame,
+                text=j,
+                variable=var
+            )
+            checkbutton.grid(row=i + 1, column=0, sticky="w")
+            checkbuttons[j] = [checkbutton, var]
+        if len(self.SELECTED_ASPECTS) == len([*ASPECTS][:-1]):
+            check_all.set("1")
+        select_all["command"] = lambda: self.check_all_command(
+            check_all=check_all,
+            checkbuttons=checkbuttons
+        )
+        apply_button = tk.Button(
+            master=button_frame,
+            text="Apply",
+            command=lambda: self.apply_selection(
+                toplevel=toplevel,
+                checkbuttons=checkbuttons,
+                selection="aspects"
+            )
+        )
+        apply_button.pack()
 
     def choose_orb_factor(self):
         toplevel = tk.Toplevel()

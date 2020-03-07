@@ -122,7 +122,7 @@ class Zodiac:
             house_positions.append(house)
         hp = [j[-1] for j in house_positions]
         planets = {
-            k: v for k, v in PLANETS.items() if k in Menu.SELECTED
+            k: v for k, v in PLANETS.items() if k in Menu.SELECTED_PLANETS
         }
         for key, value in planets.items():
             planet = self.planet_pos(planet=value["number"])
