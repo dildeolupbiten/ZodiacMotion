@@ -151,7 +151,7 @@ class Menu(tk.Menu):
             )
             checkbutton.grid(row=i + 1, column=0, sticky="w")
             checkbuttons[j] = [checkbutton, var]
-        if len(self.SELECTED_ASPECTS) == len([*ASPECTS][:-1]):
+        if len(self.SELECTED_ASPECTS) == len(ASPECTS) + 1:
             check_all.set("1")
         select_all["command"] = lambda: self.check_all_command(
             check_all=check_all,
