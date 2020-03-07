@@ -163,7 +163,7 @@ class Frame(tk.Frame):
             second=date.second,
             lat=lat,
             lon=lon,
-            hsys=HOUSE_SYSTEMS["Default"]
+            hsys=HOUSE_SYSTEMS["Default"],
         ).patterns()
         if not self.canvas:
             self.canvas = Canvas(
@@ -191,8 +191,15 @@ class Frame(tk.Frame):
             self.canvas.draw_signs()
             self.canvas.draw_house_numbers()
             self.canvas.draw_sign_symbols()
-            self.canvas.draw_planets()
-            self.canvas.draw_aspects()
+            try:
+                self.canvas.draw_planets()
+                self.canvas.draw_aspects()
+            except KeyError:
+                self.start = False
+                self.canvas.destroy()
+                self.canvas = None
+                self.pframe.destroy()
+                self.start_command()
 
     @staticmethod
     def progress_info(c: int = 0, s: int = 0, n: float = .0):
@@ -203,7 +210,6 @@ class Frame(tk.Frame):
             f" seconds remaining."
 
     def start_command(self):
-        global _start, _c
         s_Y = self.starting_date["Year"].get()
         s_m = self.starting_date["Month"].get()
         s_d = self.starting_date["Day"].get()
@@ -314,8 +320,7 @@ class Frame(tk.Frame):
             pbar.pack()
             plabel.pack()
 
-            def loop():
-                global _start, _c
+            def loop(_start: dt = None, _c: int = 0):
                 _start += td(
                     seconds=float(
                         self.time_increase_scale.get()
@@ -333,7 +338,8 @@ class Frame(tk.Frame):
                 if _start < end:
                     try:
                         self.after(
-                            int(self.chart_per_sec_scale.get() * 1000), loop
+                            int(self.chart_per_sec_scale.get() * 1000),
+                            lambda: loop(_start=_start, _c=_c)
                         )
                     except tk.TclError:
                         pass
@@ -345,10 +351,10 @@ class Frame(tk.Frame):
                     self.start = False
 
             try:
-                loop()
+                loop(_start=_start, _c=_c)
             except ZeroDivisionError:
                 sleep(0.1)
-                loop()
+                loop(_start=_start, _c=_c)
 
     def stop_command(self):
         self.start = False

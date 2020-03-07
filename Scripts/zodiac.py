@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from .constants import SIGNS, PLANETS
+from .menu import Menu
 from .modules import os, dt, tz, swe, timezone, TimezoneFinder
 from .conversions import convert_degree, reverse_convert_degree
 
@@ -18,7 +19,7 @@ class Zodiac:
             second: int = 0,
             lat: float = .0,
             lon: float = .0,
-            hsys: str = ""
+            hsys: str = "",
     ):
         self.LOCAL_YEAR = year
         self.LOCAL_MONTH = month
@@ -120,9 +121,10 @@ class Zodiac:
             ]
             house_positions.append(house)
         hp = [j[-1] for j in house_positions]
-        for key, value in PLANETS.items():
-            if key in ["Asc", "MC"]:
-                continue
+        planets = {
+            k: v for k, v in PLANETS.items() if k in Menu.SELECTED
+        }
+        for key, value in planets.items():
             planet = self.planet_pos(planet=value["number"])
             house = 0
             for i in range(12):
@@ -177,7 +179,7 @@ class Zodiac:
             except IndexError:
                 sign_positions.append(
                     [
-                        [*SIGNS][[*SIGNS].index(asc[-1]) + i - 12],                       
+                        [*SIGNS][[*SIGNS].index(asc[-1]) + i - 12],
                         degree
                     ]
                 )

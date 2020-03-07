@@ -1,17 +1,21 @@
 # -*- coding: utf-8 -*-
 
 from Scripts import __version__
-from .constants import ASPECTS, HOUSE_SYSTEMS
 from .modules import os, re, sys, tk, open_new, showinfo, dt
+from .constants import ASPECTS, HOUSE_SYSTEMS, PLANETS
 
 
 class Menu(tk.Menu):
+    SELECTED = []
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.master.configure(menu=self)
         self.options = tk.Menu(master=self, tearoff=False)
         self.help = tk.Menu(master=self, tearoff=False)
+        self.select = tk.Menu(master=self, tearoff=False)
         self.add_cascade(label="Options", menu=self.options)
+        self.add_cascade(label="Select", menu=self.select)
         self.add_cascade(label="Help", menu=self.help)
         self.options.add_command(
             label="Orb Factors",
@@ -21,10 +25,86 @@ class Menu(tk.Menu):
             label="House Systems",
             command=self.change_house_system
         )
+        self.select.add_command(
+            label="Select Objects",
+            command=self.select_objects
+        )
         self.help.add_command(
             label="About",
             command=self.about
         )
+
+    def select_objects(self):
+        toplevel = tk.Toplevel()
+        toplevel.title("Select Planets")
+        toplevel.geometry("200x310")
+        toplevel.resizable(width=False, height=False)
+        planet_frame = tk.Frame(master=toplevel)
+        planet_frame.pack(side="top")
+        button_frame = tk.Frame(master=toplevel)
+        button_frame.pack(side="bottom")
+        checkbuttons = {}
+        check_all = tk.StringVar()
+        check_all.set("0")
+        select_all = tk.Checkbutton(
+            master=planet_frame,
+            text="Check/Uncheck All",
+            variable=check_all
+        )
+        select_all.grid(row=0, column=0, sticky="w")
+        checkbuttons["Check/Uncheck All"] = [select_all, check_all]
+        for i, j in enumerate(PLANETS):
+            if j not in ["Asc", "MC"]:
+                var = tk.StringVar()
+                if j in self.SELECTED:
+                    var.set("1")
+                else:
+                    var.set("0")
+                checkbutton = tk.Checkbutton(
+                    master=planet_frame,
+                    text=j,
+                    variable=var
+                )
+                checkbutton.grid(row=i + 1, column=0, sticky="w")
+                checkbuttons[j] = [checkbutton, var]
+        if len(self.SELECTED) == len([*PLANETS][:-1]):
+            check_all.set("1")
+        select_all["command"] = lambda: self.check_all_command(
+            check_all=check_all,
+            checkbuttons=checkbuttons
+        )
+        apply_button = tk.Button(
+            master=button_frame,
+            text="Apply",
+            command=lambda: self.apply_planet_selection(
+                toplevel=toplevel,
+                checkbuttons=checkbuttons,
+            )
+        )
+        apply_button.pack()
+
+    @staticmethod
+    def check_all_command(check_all, checkbuttons: dict = {}):
+        if check_all.get() == "1":
+            for values in checkbuttons.values():
+                values[-1].set("1")
+                values[0].configure(variable=values[-1])
+        else:
+            for values in checkbuttons.values():
+                values[-1].set(",")
+                values[0].configure(variable=values[-1])
+
+    @classmethod
+    def apply_planet_selection(
+            cls,
+            toplevel: tk.Toplevel,
+            checkbuttons: dict = {}
+    ):
+        cls.SELECTED = []
+        for k, v in checkbuttons.items():
+            if v[1].get() == "1":
+                cls.SELECTED.append(k)
+        toplevel.destroy()
 
     def choose_orb_factor(self):
         toplevel = tk.Toplevel()
@@ -76,14 +156,14 @@ class Menu(tk.Menu):
 
     @staticmethod
     def change_hsys(
-            parent: tk.Toplevel = None,
+            toplevel: tk.Toplevel = None,
             checkbuttons: dict = {}
     ):
         for i in HOUSE_SYSTEMS:
             if i != "Default":
                 if checkbuttons[i][1].get() == "1":
                     HOUSE_SYSTEMS["Default"] = HOUSE_SYSTEMS[i]
-        parent.destroy()
+        toplevel.destroy()
 
     @staticmethod
     def check_uncheck(checkbuttons: dict = {}, hsys: str = ""):
@@ -138,8 +218,8 @@ class Menu(tk.Menu):
             master=button_frame,
             text="Apply",
             command=lambda: self.change_hsys(
-                toplevel,
-                checkbuttons,
+                toplevel=toplevel,
+                checkbuttons=checkbuttons,
             )
         )
         apply_button.pack()
