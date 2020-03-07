@@ -4,10 +4,10 @@ from Scripts import __version__
 from .modules import os, re, sys, tk, open_new, showinfo, dt
 from .constants import ASPECTS, HOUSE_SYSTEMS, PLANETS
 
-
 class Menu(tk.Menu):
     SELECTED_PLANETS = []
     SELECTED_ASPECTS = []
+    START = True
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -117,6 +117,7 @@ class Menu(tk.Menu):
                     cls.SELECTED_PLANETS.append(k)
                 elif selection == "aspects":
                     cls.SELECTED_ASPECTS.append(k)
+        cls.START = False
         toplevel.destroy()
 
     def select_aspect(self):

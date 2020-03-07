@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from .menu import Menu
 from .zodiac import Zodiac
 from .canvas import Canvas
 from .constants import HOUSE_SYSTEMS
@@ -191,15 +192,8 @@ class Frame(tk.Frame):
             self.canvas.draw_signs()
             self.canvas.draw_house_numbers()
             self.canvas.draw_sign_symbols()
-            try:
-                self.canvas.draw_planets()
-                self.canvas.draw_aspects()
-            except KeyError:
-                self.start = False
-                self.canvas.destroy()
-                self.canvas = None
-                self.pframe.destroy()
-                self.start_command()
+            self.canvas.draw_planets()
+            self.canvas.draw_aspects()
 
     @staticmethod
     def progress_info(c: int = 0, s: int = 0, n: float = .0):
@@ -330,7 +324,9 @@ class Frame(tk.Frame):
                 pbar["value"] = _c
                 pbar["maximum"] = s
                 pstring.set(self.progress_info(c=_c, s=s, n=n))
-                if not self.start:
+                if not self.start or not Menu.START:
+                    self.start = False
+                    Menu.START = True
                     return
                 self.change_current_date(date=_start)
                 self.change_zodiac(date=_start, lat=lat, lon=lon)
