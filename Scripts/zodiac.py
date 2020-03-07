@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from .constants import SIGNS, PLANETS
 from .menu import Menu
+from .constants import SIGNS, PLANETS
 from .modules import os, dt, tz, swe, timezone, TimezoneFinder
 from .conversions import convert_degree, reverse_convert_degree
 
