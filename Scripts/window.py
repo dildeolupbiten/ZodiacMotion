@@ -2,13 +2,11 @@
 
 from .zodiac import Zodiac
 from .canvas import Canvas
-from .constants import ASPECTS, HOUSE_SYSTEMS
+from .constants import ASPECTS, HOUSE_SYSTEMS, HSYS
 from .modules import td, dt, time, sleep, timezone, TimezoneFinder
 from .modules import os, re, sys, tk, showinfo, Progressbar, open_new
 
 from Scripts import __version__
-
-HSYS = "P"
 
 
 class Menu(tk.Menu):
