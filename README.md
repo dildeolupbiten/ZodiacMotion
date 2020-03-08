@@ -31,4 +31,4 @@ python ZodiacMotion.py
 
 Please watch the video in order to see how the program is used.
 
-[![Watch the video](https://user-images.githubusercontent.com/29302909/75923566-690f8c80-5e76-11ea-9f25-2a667d44e286.png)](https://www.youtube.com/watch?v=6udc7c4_nzE&vq=hd720)
+[![Watch the video](https://user-images.githubusercontent.com/29302909/75923566-690f8c80-5e76-11ea-9f25-2a667d44e286.png)](https://www.youtube.com/watch?v=64TfWWOfTmw&vq=hd720)
