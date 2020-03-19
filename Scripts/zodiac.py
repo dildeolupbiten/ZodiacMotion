@@ -89,7 +89,7 @@ class Zodiac:
 
     def planet_pos(self, planet: int = 0):
         calc = convert_degree(
-            degree=swe.calc_ut(self.JD, planet)[0]
+            degree=swe.calc(self.JD, planet)[0]
         )
         return calc[1], reverse_convert_degree(calc[0], calc[1])
 
